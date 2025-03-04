@@ -1,95 +1,93 @@
-# PDFTool
+# PDF Tool Developer Documentation
 
-## 一、概述
-本工具是一个基于 Python 的桌面应用程序，使用 `tkinter` 库创建图形用户界面（GUI），提供了将多个PDF文件转换为 Word 文档以及合并多个 PDF 文件的功能。
+## I. Overview
+This tool is a Python-based desktop application that uses the `tkinter` library to create a Graphical User Interface (GUI). It provides the functions of converting multiple PDF files into Word documents and merging multiple PDF files.
 
-## 二、环境要求
-- **Python 版本**：Python 3.x
-- **依赖库**：
-  - `tkinter`：Python 内置库，用于创建 GUI。
-  - `pdf2docx`：用于将 PDF 文件转换为 Word 文档。
-  - `PyPDF2`：用于合并多个 PDF 文件。
-  - `ctypes`：Python 内置库，用于解决字体模糊问题。
+## II. Environment Requirements
+- **Python Version**: Python 3.x
+- **Dependent Libraries**:
+  - `tkinter`: A built-in Python library used for creating GUIs.
+  - `pdf2docx`: Used to convert PDF files into Word documents.
+  - `PyPDF2`: Used to merge multiple PDF files.
+  - `ctypes`: A built-in Python library used to solve the font blurring problem.
 
-## 三、使用方法
-1. 运行程序，会弹出一个窗口。
-2. 点击 “Select PDF” 按钮，选择一个或多个 PDF 文件。
-3. 选择文件后，“Convert to Word” 和 “Merge PDFs” 按钮将变为可用状态。
-    - 点击 “Convert to Word” 按钮，将选择的 PDF 文件转换为 Word 文档。
-    - 点击 “Merge PDFs” 按钮，选择保存路径，将选择的 PDF 文件合并为一个 PDF 文件。
-4. 在文件列表框中，可以通过拖动文件来调整文件顺序。
-5. 右键点击文件列表框中的文件，选择 “Delete” 可以删除该文件。
-   
+## III. Usage Instructions
+1. Run the program, and a window will pop up.
+2. Click the "Select PDF" button to select one or more PDF files.
+3. After selecting the files, the "Convert to Word" and "Merge PDFs" buttons will become available.
+    - Click the "Convert to Word" button to convert the selected PDF files into Word documents.
+    - Click the "Merge PDFs" button, select the save path, and merge the selected PDF files into one PDF file.
+4. In the file list box, you can adjust the file order by dragging the files.
+5. Right-click on a file in the file list box and select "Delete" to delete the file.
 
-## 四、代码结构
-### 1. 类定义
-`PDFTool` 类是整个应用程序的核心，负责创建 GUI 界面和处理各种操作。
+## IV. Code Structure
+### 1. Class Definition
+The `PDFTool` class is the core of the entire application, responsible for creating the GUI interface and handling various operations.
 
-#### 初始化方法 `__init__(self, root)`
-- 解决字体模糊问题，启用 DPI 感知。
-- 设置窗口标题、大小和位置，禁止调整窗口大小。
-- 创建界面元素，包括标签、按钮、列表框等。
-- 绑定鼠标事件和右键点击事件。
-- 初始化变量，如 `pdf_path` 用于存储选择的 PDF 文件路径，`dragged_index` 用于记录拖动的文件索引。
+#### Initialization Method `__init__(self, root)`
+- Solve the font blurring problem and enable DPI awareness.
+- Set the window title, size, and position, and disable window resizing.
+- Create interface elements, including labels, buttons, list boxes, etc.
+- Bind mouse events and right-click events.
+- Initialize variables, such as `pdf_path` used to store the paths of the selected PDF files, and `dragged_index` used to record the index of the dragged file.
 
-#### 窗口居中方法 `center_window(self)`
-- 强制更新窗口的几何信息。
-- 获取屏幕和窗口的宽度、高度。
-- 计算窗口居中的位置并设置窗口位置。
+#### Window Centering Method `center_window(self)`
+- Force an update of the window's geometric information.
+- Obtain the width and height of the screen and the window.
+- Calculate the centered position of the window and set the window position.
 
-#### 选择 PDF 文件方法 `select_pdf(self)`
-- 打开文件选择对话框，允许用户选择一个或多个 PDF 文件。
-- 如果选择了文件，启用转换和合并按钮，并更新文件列表显示。
-- 显示选择的文件信息。
+#### Select PDF File Method `select_pdf(self)`
+- Open a file selection dialog box, allowing the user to select one or more PDF files.
+- If files are selected, enable the conversion and merge buttons, and update the file list display.
+- Display the information of the selected files.
 
-#### 更新文件列表方法 `update_file_listbox(self)`
-- 清空当前文件列表。
-- 遍历 `pdf_path` 列表，将文件名插入到列表框中。
+#### Update File List Method `update_file_listbox(self)`
+- Clear the current file list.
+- Iterate through the `pdf_path` list and insert the file names into the list box.
 
-#### 转换 PDF 到 Word 方法 `convert_pdf_to_word(self)`
-- 检查是否选择了 PDF 文件，如果没有则显示错误信息。
-- 遍历选择的 PDF 文件，使用 `pdf2docx` 库将其转换为 Word 文档。
-- 显示转换成功或失败的信息。
+#### Convert PDF to Word Method `convert_pdf_to_word(self)`
+- Check if PDF files are selected. If not, display an error message.
+- Iterate through the selected PDF files and use the `pdf2docx` library to convert them into Word documents.
+- Display the success or failure information of the conversion.
 
-#### 合并 PDF 文件方法 `merge_pdfs(self)`
-- 检查是否选择了 PDF 文件，如果没有则显示错误信息。
-- 打开保存文件对话框，让用户指定合并后的 PDF 文件保存路径。
-- 使用 `PyPDF2` 库将选择的 PDF 文件合并并保存到指定路径。
-- 显示合并成功或失败的信息。
+#### Merge PDF Files Method `merge_pdfs(self)`
+- Check if PDF files are selected. If not, display an error message.
+- Open a save file dialog box, allowing the user to specify the save path of the merged PDF file.
+- Use the `PyPDF2` library to merge the selected PDF files and save them to the specified path.
+- Display the success or failure information of the merge.
 
-#### 开始拖动方法 `on_start_drag(self, event)`
-- 获取鼠标点击位置对应的文件索引。
-- 记录拖动的文件索引，并设置该文件为选中状态。
+#### Start Dragging Method `on_start_drag(self, event)`
+- Obtain the file index corresponding to the mouse click position.
+- Record the index of the dragged file and set the file as the selected state.
 
-#### 拖动过程方法 `on_drag(self, event)`
-- 如果正在拖动文件，获取鼠标当前位置对应的文件索引。
-- 如果目标索引与拖动的索引不同，交换文件列表中的位置，并更新文件列表显示。
-- 更新拖动的索引，并设置目标文件为选中状态。
+#### Dragging Process Method `on_drag(self, event)`
+- If a file is being dragged, obtain the file index corresponding to the current mouse position.
+- If the target index is different from the dragged index, swap the positions in the file list and update the file list display.
+- Update the dragged index and set the target file as the selected state.
 
-#### 拖动结束方法 `on_drop(self, event)`
-- 清除拖动的索引记录。
+#### Dragging End Method `on_drop(self, event)`
+- Clear the record of the dragged index.
 
-#### 显示上下文菜单方法 `show_context_menu(self, event)`
-- 获取鼠标点击位置对应的文件索引。
-- 设置该文件为选中状态。
-- 在鼠标位置显示上下文菜单。
+#### Display Context Menu Method `show_context_menu(self, event)`
+- Obtain the file index corresponding to the mouse click position.
+- Set the file as the selected state.
+- Display the context menu at the mouse position.
 
-#### 删除选中文件方法 `delete_selected_file(self)`
-- 获取选中的文件索引。
-- 如果有选中文件，从 `pdf_path` 列表中删除该文件，并更新文件列表显示。
-- 如果文件列表为空，禁用转换和合并按钮。
+#### Delete Selected File Method `delete_selected_file(self)`
+- Obtain the index of the selected file.
+- If a file is selected, delete the file from the `pdf_path` list and update the file list display.
+- If the file list is empty, disable the conversion and merge buttons.
 
-### 2. 主程序
+### 2. Main Program
 ```python
 if __name__ == "__main__":
     root = tk.Tk()
     app = PDFTool(root)
     root.mainloop()
 ```
-创建 `tkinter` 主窗口，实例化 `PDFTool` 类，并启动主事件循环。
+Create the `tkinter` main window, instantiate the `PDFTool` class, and start the main event loop.
 
-
-## 五、注意事项
-- 转换和合并操作可能需要一定的时间，具体取决于文件大小和系统性能。
-- 如果在转换或合并过程中出现错误，会弹出错误信息框显示具体错误内容。
-- 目前部分pdf文件无法转换为word文档，详情见 `pdf2docx` 库的文档https://github.com/ArtifexSoftware/pdf2docx。
+## V. Notes
+- The conversion and merge operations may take some time, depending on the file size and system performance.
+- If an error occurs during the conversion or merge process, an error message box will pop up to display the specific error content.
+- Currently, some PDF files cannot be converted into Word documents. For details, refer to the documentation of the `pdf2docx` library at https://github.com/ArtifexSoftware/pdf2docx. 
