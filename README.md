@@ -1,15 +1,16 @@
 # PDF Tool
 ## English|[中文](https://github.com/Tide1228/PDFTool/blob/main/README_zh.md)
+
 ## I. Overview
-This tool is a Python-based desktop application that uses the `tkinter` library to create a Graphical User Interface (GUI). It provides the functions of converting multiple PDF files into Word documents and merging multiple PDF files.
+This tool is a desktop application based on `pdf2docx` and `PyPDF2`. It uses the `tkinter` library to create a Graphical User Interface (GUI), providing the functions of converting multiple PDF files into Word documents and merging multiple PDF files.
 
 ## II. Environment Requirements
 - **Python Version**: Python 3.x
 - **Dependent Libraries**:
-  - `tkinter`: A built-in Python library used for creating GUIs.
+  - `tkinter`: A built - in Python library used for creating GUIs.
   - `pdf2docx`: Used to convert PDF files into Word documents.
   - `PyPDF2`: Used to merge multiple PDF files.
-  - `ctypes`: A built-in Python library used to solve the font blurring problem.
+  - `ctypes`: A built - in Python library used to solve the font blurring problem.
 
 ## III. Usage Instructions
 1. Run the program, and a window will pop up.
@@ -18,7 +19,7 @@ This tool is a Python-based desktop application that uses the `tkinter` library 
     - Click the "Convert to Word" button to convert the selected PDF files into Word documents.
     - Click the "Merge PDFs" button, select the save path, and merge the selected PDF files into one PDF file.
 4. In the file list box, you can adjust the file order by dragging the files.
-5. Right-click on a file in the file list box and select "Delete" to delete the file.
+5. Right - click on a file in the file list box and select "Delete" to delete the file.
 
 ## IV. Code Structure
 ### 1. Class Definition
@@ -28,7 +29,7 @@ The `PDFTool` class is the core of the entire application, responsible for creat
 - Solve the font blurring problem and enable DPI awareness.
 - Set the window title, size, and position, and disable window resizing.
 - Create interface elements, including labels, buttons, list boxes, etc.
-- Bind mouse events and right-click events.
+- Bind mouse events and right - click events.
 - Initialize variables, such as `pdf_path` used to store the paths of the selected PDF files, and `dragged_index` used to record the index of the dragged file.
 
 #### Window Centering Method `center_window(self)`
