@@ -1,5 +1,5 @@
 # PDF Tool Developer Documentation
-
+##English|[中文](https://github.com/Tide1228/PDFTool/blob/main/README_zh.md)
 ## I. Overview
 This tool is a Python-based desktop application that uses the `tkinter` library to create a Graphical User Interface (GUI). It provides the functions of converting multiple PDF files into Word documents and merging multiple PDF files.
 
